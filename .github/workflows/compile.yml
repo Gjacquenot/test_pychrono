@@ -26,6 +26,7 @@ jobs:
         # docker push gjacquenot/xdynclang
         # docker build -t gjacquenot/xdynubuntu .
         docker info
+        docker build -t gjacquenot/pychrono .
     #- name: Compile
     #  run: |
     #    git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/xdyn
