@@ -30,7 +30,7 @@ RUN apt-get update \
     wget \
  && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0.tar.gz -O chrono.tar.gz && \
+RUN wget --quiet https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0.tar.gz -O chrono_src.tar.gz && \
     mkdir -p chrono_src && \
     tar -xzf chrono_src.tar.gz --strip 1 -C chrono_src && \
     rm -rf chrono_src.tar.gz && \
