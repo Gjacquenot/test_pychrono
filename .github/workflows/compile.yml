@@ -1,0 +1,33 @@
+name: Ubuntu 2204
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  Create_and_push_ubuntu_20_04_xdyn_build_docker_image:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash --noprofile --norc {0}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    #- name: Login to Docker Hub
+    #  uses: docker/login-action@v1
+    #  with:
+    #    username: ${{ secrets.DOCKERHUB_LOGIN }}
+    #    password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Build and push the docker image
+      run: |
+        # docker pull gjacquenot/xdynclang || true
+        # docker build --cache-from gjacquenot/xdynclang -t gjacquenot/xdynclang .
+        # docker push gjacquenot/xdynclang
+        # docker build -t gjacquenot/xdynubuntu .
+        docker info
+    #- name: Compile
+    #  run: |
+    #    git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/xdyn
+    #    cd xdyn && git checkout new && cd ..
+    #    make
