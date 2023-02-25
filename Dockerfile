@@ -13,7 +13,8 @@ RUN apt-get update \
     gpg-agent \
     g++ \
     gcc \
-    gfortran \
+    libeigen3-dev \
+    libirrlicht-dev \
     libblas3 \
     liblapack3 \
     libbz2-dev \
