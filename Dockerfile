@@ -13,6 +13,10 @@ RUN apt-get update \
     gpg-agent \
     g++ \
     gcc \
+    libgl1-mesa-dev \
+    libX11-devel \
+    freeglut3 freeglut3-dev \
+    xorg-dev \
     libeigen3-dev \
     libirrlicht-dev \
     libblas3 \
