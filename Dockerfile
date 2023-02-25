@@ -17,6 +17,7 @@ RUN apt-get update \
     libirrlicht-dev \
     libblas3 \
     liblapack3 \
+    libomp-dev \
     libbz2-dev \
     make \
     ninja-build \
@@ -28,3 +29,15 @@ RUN apt-get update \
     unzip \
     wget \
  && rm -rf /var/lib/apt/lists/*
+
+RUN wget https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0.tar.gz -O chrono.tar.gz && \
+    mkdir -p chrono_src && \
+    tar -xzf chrono_src.tar.gz --strip 1 -C chrono_src && \
+    rm -rf chrono_src.tar.gz && \
+    mkdir -p chrono_build && \
+    cd chrono_build && \
+    cmake \
+         -D ENABLE_MODULE_PYTHON:BOOL=ON \
+         ../chrono_src && \
+    cd .. && \
+    rm -rf chrono_src
