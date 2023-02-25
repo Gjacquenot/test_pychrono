@@ -39,5 +39,7 @@ RUN wget --quiet https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0
     cmake \
          -D ENABLE_MODULE_PYTHON:BOOL=ON \
          ../chrono_src && \
+    make && \
+    make install && \ 
     cd .. && \
     rm -rf chrono_src
