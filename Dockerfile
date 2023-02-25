@@ -41,7 +41,7 @@ RUN wget --quiet https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0
          -D ENABLE_MODULE_IRRLICHT:BOOL=ON \
          -D ENABLE_MODULE_PYTHON:BOOL=ON \
          ../chrono_src && \
-    make -j && \
+    make -j 4 && \
     make install && \ 
     cd .. && \
     rm -rf chrono_src
