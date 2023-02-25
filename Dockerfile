@@ -14,7 +14,7 @@ RUN apt-get update \
     g++ \
     gcc \
     libgl1-mesa-dev \
-    libX11-devel \
+    libX11-dev \
     freeglut3 freeglut3-dev \
     xorg-dev \
     libeigen3-dev \
