@@ -37,10 +37,11 @@ RUN wget --quiet https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0
     mkdir -p chrono_build && \
     cd chrono_build && \
     cmake \
+         -D ENABLE_MODULE_POSTPROCESS:BOOL=ON \
          -D ENABLE_MODULE_IRRLICHT:BOOL=ON \
          -D ENABLE_MODULE_PYTHON:BOOL=ON \
          ../chrono_src && \
-    make && \
+    make -j && \
     make install && \ 
     cd .. && \
     rm -rf chrono_src
