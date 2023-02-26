@@ -66,3 +66,25 @@ RUN export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/l
 #RUN export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" && \
 #    export DISPLAY="unix:0" && \
 #    python3 /usr/local/share/chrono/python/pychrono/demos/mbs/demo_MBS_custom_contact.py
+
+FROM deepnote/python:3.9-bullseye
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+    libgl1-mesa-dev \
+    libx11-dev \
+    freeglut3 \
+    xorg-dev \
+    libirrlicht1.8 \
+    libomp5 \
+    python3-six \
+    python3-numpy \
+    python3-matplotlib \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local/chrono /usr/local/chrono
+
+RUN ldd /usr/local/chrono/lib/libChronoEngine.so || true
+RUN ldd /usr/local/chrono/share/chrono/python/_core.so || true
+RUN export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" && \
+    python3 /usr/local/chrono/share/chrono/python/pychrono/demos/core/demo_CH_buildsystem.py 
