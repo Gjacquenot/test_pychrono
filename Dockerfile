@@ -49,3 +49,16 @@ RUN wget --quiet https://github.com/projectchrono/chrono/archive/refs/tags/8.0.0
     make install && \ 
     cd .. && \
     rm -rf chrono_src
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+    python3-six \
+    python3-numpy \
+    python3-matplotlib \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN ldd /usr/local/lib/libChronoEngine.so || true
+RUN ldd /usr/local/share/chrono/python/_core.so  || true
+RUN export PYTHONPATH="/usr/local/share/chrono/python:/usr/local/lib:$PYTHONPATH" && \
+    python3 /usr/local/share/chrono/python/pychrono/demos/mbs/demo_MBS_custom_contact.py
+
