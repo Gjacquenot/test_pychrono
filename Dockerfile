@@ -60,8 +60,9 @@ RUN apt-get update \
 
 RUN ldd /usr/local/chrono/lib/libChronoEngine.so || true
 RUN ldd /usr/local/chrono/share/chrono/python/_core.so || true
-RUN export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" && \
-    python3 /usr/local/chrono/share/chrono/python/pychrono/demos/core/demo_CH_buildsystem.py 
+RUN export LD_LIBRARY_PATH="/usr/local/chrono/lib:$LD_LIBRARY_PATH" && \
+ && export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" \
+ && python3 /usr/local/chrono/share/chrono/python/pychrono/demos/core/demo_CH_buildsystem.py 
 
 #RUN export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" && \
 #    export DISPLAY="unix:0" && \
@@ -86,5 +87,6 @@ COPY --from=builder /usr/local/chrono /usr/local/chrono
 
 RUN ldd /usr/local/chrono/lib/libChronoEngine.so || true
 RUN ldd /usr/local/chrono/share/chrono/python/_core.so || true
-RUN export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" && \
-    python3 /usr/local/chrono/share/chrono/python/pychrono/demos/core/demo_CH_buildsystem.py 
+RUN export LD_LIBRARY_PATH="/usr/local/chrono/lib:$LD_LIBRARY_PATH" && \
+ && export PYTHONPATH="/usr/local/chrono/share/chrono/python:/usr/local/chrono/lib:$PYTHONPATH" \
+ && python3 /usr/local/chrono/share/chrono/python/pychrono/demos/core/demo_CH_buildsystem.py 
