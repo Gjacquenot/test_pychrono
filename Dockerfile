@@ -58,7 +58,11 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 RUN ldd /usr/local/lib/libChronoEngine.so || true
-RUN ldd /usr/local/share/chrono/python/_core.so  || true
+RUN ldd /usr/local/share/chrono/python/_core.so || true
 RUN export PYTHONPATH="/usr/local/share/chrono/python:/usr/local/lib:$PYTHONPATH" && \
+    python3 /usr/local/share/chrono/python/pychrono/demos/core/demo_CH_buildsystem.py 
+
+RUN export PYTHONPATH="/usr/local/share/chrono/python:/usr/local/lib:$PYTHONPATH" && \
+    export DISPLAY="unix:0" && \
     python3 /usr/local/share/chrono/python/pychrono/demos/mbs/demo_MBS_custom_contact.py
 
